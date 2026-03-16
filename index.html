@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACK-IT-NET | Alpine Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/solutions.css?v=2">
+    <style>
+        /* ============================================
+           RESET & BASE
+        ============================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            background-image: url('images/mountains-bg.png');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: contain;
+            background-attachment: fixed;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        /* ============================================
+           LAYOUT CONTAINER
+        ============================================= */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           1. TOP BAR
+        ============================================= */
+        .top-bar {
+            background-color: #538257;
+            height: 8px;
+            width: 100%;
+        }
+
+        .top-bar__discover {
+            background-color: #f5f5f0;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 1px solid #e0e0d8;
+        }
+
+        .top-bar__discover a {
+            color: #538257;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .top-bar__discover a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           2. HERO SECTION
+        ============================================= */
+        .hero {
+            position: relative;
+            width: 100%;
+        }
+
+        .hero__image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .hero__image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero__logo-card {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        .hero__logo-card img {
+            width: 140px;
+            height: auto;
+        }
+
+        .hero__overlay {
+            background-color: rgba(60, 95, 63, 0.88);
+            padding: 30px 0 0 0;
+        }
+
+        .hero__overlay .container {
+            padding-bottom: 0;
+        }
+
+        .hero__title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .hero__subtitle {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+
+        /* Tab Navigation */
+        .hero__tabs {
+            display: flex;
+            gap: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 0;
+        }
+
+        .hero__tab {
+            display: inline-block;
+            padding: 14px 24px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .hero__tab:hover {
+            background-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .hero__tab--active {
+            background-color: rgba(255, 255, 255, 0.22);
+            border-bottom: 3px solid #fff;
+        }
+
+        /* ============================================
+           3. OVERVIEW SECTION
+        ============================================= */
+        .overview {
+            background-color: #fff;
+            padding: 40px 0 30px 0;
+        }
+
+        .overview__heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #538257;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .overview__text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #444;
+            text-align: left;
+        }
+
+        /* ============================================
+           4. FACTSHEET SECTION
+        ============================================= */
+        .factsheet {
+            padding: 20px 0 40px 0;
+        }
+
+        .factsheet__card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .factsheet__header {
+            background-color: #538257;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .factsheet__header-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .factsheet__header-icon {
+            color: #fff;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .factsheet__header-icon:hover {
+            opacity: 1;
+        }
+
+        .factsheet__body {
+            background-color: #f0f4e8;
+            padding: 24px;
+        }
+
+        .factsheet__row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 40px;
+            padding: 14px 0;
+            border-bottom: 1px solid #dde3d0;
+        }
+
+        .factsheet__row:last-child {
+            border-bottom: none;
+        }
+
+        .factsheet__item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .factsheet__label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #5a6e3a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .factsheet__value {
+            font-size: 0.92rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .factsheet__badge {
+            display: inline-block;
+            background-color: #538257;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 3px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           5. LATEST NEWS SECTION
+        ============================================= */
+        .latest-news {
+            padding: 40px 0 30px 0;
+            background-color: #fff;
+        }
+
+        .latest-news__heading {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #538257;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .latest-news__item {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .latest-news__item:last-child {
+            border-bottom: none;
+        }
+
+        .latest-news__item-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .latest-news__item-text {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .latest-news__read-more {
+            color: #538257;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .latest-news__read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           6. UPCOMING EVENTS SECTION
+        ============================================= */
+        .upcoming-events {
+            padding: 20px 0 40px 0;
+        }
+
+        .upcoming-events__heading {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #538257;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .upcoming-events__empty {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .upcoming-events__link {
+            color: #538257;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .upcoming-events__link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           7. PARTNERS SECTION (ACCORDION)
+        ============================================= */
+        .partners {
+            padding: 40px 0;
+            background-color: #fff;
+        }
+
+        .partners__heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #538257;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .partner-accordion {
+            border-top: 1px solid #ddd;
+        }
+
+        .partner-accordion__item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .partner-accordion__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            cursor: pointer;
+            width: 100%;
+            background: none;
+            border: none;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .partner-accordion__name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #538257;
+        }
+
+        .partner-accordion__name--lead {
+            color: #be5629;
+        }
+
+        .partner-accordion__lead-tag {
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: #be5629;
+            margin-left: 6px;
+        }
+
+        .partner-accordion__chevron {
+            font-size: 0.8rem;
+            color: #888;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .partner-accordion__item--open .partner-accordion__chevron {
+            transform: rotate(180deg);
+        }
+
+        .partner-accordion__body {
+            display: none;
+            padding: 0 0 16px 0;
+        }
+
+        .partner-accordion__item--open .partner-accordion__body {
+            display: block;
+        }
+
+        .partner-accordion__detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 0;
+            font-size: 0.88rem;
+            color: #555;
+        }
+
+        .partner-accordion__detail-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: #538257;
+        }
+
+        .partner-accordion__detail a {
+            color: #538257;
+        }
+
+        .partner-accordion__detail a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           8. GREEN CONTACT BAR
+        ============================================= */
+        .contact-bar {
+            background-color: #538257;
+            padding: 30px 0;
+            color: #fff;
+        }
+
+        .contact-bar__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-bar__title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .contact-bar__group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-bar__label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+
+        .contact-bar__value {
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .contact-bar__value a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .contact-bar__value a:hover {
+            opacity: 0.85;
+        }
+
+        /* ============================================
+           9. FOOTER
+        ============================================= */
+        .site-footer {
+            background-color: #8caabe;
+            padding: 40px 0 0 0;
+            color: #fff;
+        }
+
+        .site-footer__top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .site-footer__brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .site-footer__logo {
+            max-width: 200px;
+        }
+
+        .site-footer__social-label {
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .site-footer__social {
+            display: flex;
+            gap: 8px;
+        }
+
+        .site-footer__social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            color: #fff;
+            transition: opacity 0.2s;
+        }
+
+        .site-footer__social-link:hover {
+            opacity: 0.85;
+        }
+
+        .site-footer__social-link--facebook { background-color: #1877f2; }
+        .site-footer__social-link--x { background-color: #14171a; }
+        .site-footer__social-link--youtube { background-color: #ff0000; }
+        .site-footer__social-link--linkedin { background-color: #0a66c2; }
+        .site-footer__social-link--instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+        .site-footer__social-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .site-footer__column-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .site-footer__link-list li {
+            margin-bottom: 8px;
+        }
+
+        .site-footer__link {
+            color: #fff;
+            font-size: 0.88rem;
+            opacity: 0.9;
+        }
+
+        .site-footer__link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .site-footer__address {
+            font-style: normal;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .site-footer__address a {
+            color: #fff;
+        }
+
+        .site-footer__address a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Bottom Bar */
+        .site-footer__bottom {
+            background-color: rgba(0, 0, 0, 0.15);
+            padding: 14px 0;
+        }
+
+        .site-footer__bottom-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .site-footer__copyright {
+            font-size: 0.78rem;
+            opacity: 0.85;
+        }
+
+        .site-footer__copyright a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .site-footer__legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .site-footer__legal-link {
+            color: #fff;
+            font-size: 0.78rem;
+            opacity: 0.85;
+        }
+
+        .site-footer__legal-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================= */
+        @media (max-width: 768px) {
+            .hero__image-wrapper {
+                height: 250px;
+            }
+
+            .hero__title {
+                font-size: 2rem;
+            }
+
+            .hero__tabs {
+                flex-wrap: wrap;
+            }
+
+            .hero__tab {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .factsheet__row {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .site-footer__top {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-bar__inner {
+                flex-direction: column;
+            }
+
+            .site-footer__bottom-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         1. TOP BAR
+    ============================================= -->
+    <div class="top-bar" role="presentation"></div>
+    <div class="top-bar__discover">
+        <a href="https://www.alpine-space.eu/projects/" target="_blank" rel="noopener">&gt;&gt; discover more projects</a>
+    </div>
+
+    <!-- ============================================
+         2. HERO SECTION
+    ============================================= -->
+    <section class="hero" id="hero">
+        <div class="hero__image-wrapper">
+            <img src="images/hero-bg.jpg" alt="Alpine landscape with mountains and greenery">
+            <div class="hero__logo-card">
+                <img src="images/hack-it-net-logo.png" alt="HACK-IT-NET Project Logo">
+            </div>
+        </div>
+        <div class="hero__overlay">
+            <div class="container">
+                <h1 class="hero__title">HACK-IT-NET</h1>
+                <p class="hero__subtitle">HACK-IT-NET: enabling an Alpine region Health And Care Knowledge and Innovation Transfer NETwork</p>
+            </div>
+            <div class="container">
+                <nav class="hero__tabs" aria-label="Project navigation">
+                    <a href="#overview" class="hero__tab hero__tab--active">Home</a>
+                    <a href="#outcomes" class="hero__tab">Outcomes</a>
+                    <a href="#resources" class="hero__tab">Resources</a>
+                    <a href="#news" class="hero__tab">News &amp; Events</a>
+                    <a href="#solutions" class="hero__tab" id="solutions-tab" onclick="showSolutionSuppliers(); return false;">Solution Suppliers</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- ============================================
+             3. OVERVIEW SECTION
+        ============================================= -->
+        <section class="overview" id="overview">
+            <div class="container">
+                <h2 class="overview__heading">Overview</h2>
+                <p class="overview__text">
+                    The Alpine region hosts world-class health and care innovations such as machine learning and remote cancer screening that address challenges like demographic divides and seasonal demand fluctuations. However, these innovations are often inaccessible to health and care stakeholders due to high demands and resource constraints. HACK-IT-NET aims to bridge this gap by creating a sustainable innovation transfer framework, capitalizing the existing innovation across the Alpine region. By fostering transnational cooperation and recognising local needs, HACK-IT-NET is committed to enhancing health and care delivery, promoting green and digital advancements, and supporting sustainable development goals.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================
+             4. FACTSHEET SECTION
+        ============================================= -->
+        <section class="factsheet" id="factsheet">
+            <div class="container">
+                <div class="factsheet__card">
+                    <div class="factsheet__header">
+                        <span class="factsheet__header-title">Factsheet</span>
+                        <a href="#" class="factsheet__header-icon" aria-label="Link to factsheet">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="factsheet__body">
+                        <!-- Row 1 -->
+                        <div class="factsheet__row">
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Programme period</span>
+                                <span class="factsheet__value">2021&ndash;2027</span>
+                            </div>
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Start Date</span>
+                                <span class="factsheet__value">07/2024</span>
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="factsheet__row">
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Priority</span>
+                                <span class="factsheet__value">Innovation and digitalisation supporting a green Alpine region</span>
+                            </div>
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">End Date</span>
+                                <span class="factsheet__value">06/2027</span>
+                            </div>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="factsheet__row">
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Specific objective</span>
+                                <span class="factsheet__value">SO 3.1 - Developing and enhancing research and innovation capacities and uptake of advanced technologies</span>
+                            </div>
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Total eligible costs</span>
+                                <span class="factsheet__value">2.512.138 EUR</span>
+                            </div>
+                        </div>
+                        <!-- Row 4 -->
+                        <div class="factsheet__row">
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Contribution to EUSALP AG</span>
+                                <span class="factsheet__value">AG1 Research &amp; innovation</span>
+                            </div>
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">ERDF grants</span>
+                                <span class="factsheet__value">1.678.500 EUR</span>
+                            </div>
+                        </div>
+                        <!-- Row 5 -->
+                        <div class="factsheet__row">
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Type of project</span>
+                                <span class="factsheet__value">Classic projects</span>
+                            </div>
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Keywords</span>
+                                <span class="factsheet__value">Health and social services, Innovation capacity and awareness-raising</span>
+                            </div>
+                        </div>
+                        <!-- Row 6 -->
+                        <div class="factsheet__row">
+                            <div class="factsheet__item">
+                                <span class="factsheet__label">Project status</span>
+                                <span class="factsheet__value"><span class="factsheet__badge">Ongoing</span></span>
+                            </div>
+                            <div class="factsheet__item">
+                                <!-- empty -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             5. LATEST NEWS SECTION
+        ============================================= -->
+        <section class="latest-news" id="news">
+            <div class="container">
+                <h2 class="latest-news__heading">Latest News</h2>
+
+                <article class="latest-news__item">
+                    <h3 class="latest-news__item-title">HACK-IT-NET Kick-Off Meeting Successfully Held</h3>
+                    <p class="latest-news__item-text">
+                        The HACK-IT-NET consortium gathered in San Don&agrave; di Piave for the project kick-off meeting, setting the foundation for transnational cooperation in health and care innovation transfer across the Alpine region.
+                    </p>
+                    <a href="#" class="latest-news__read-more">&gt;&gt; read post</a>
+                </article>
+
+                <article class="latest-news__item">
+                    <h3 class="latest-news__item-title">First Stakeholder Engagement Workshop Announced</h3>
+                    <p class="latest-news__item-text">
+                        HACK-IT-NET partners are preparing the first stakeholder engagement workshop aimed at mapping the health and care innovation ecosystem across Alpine regions.
+                    </p>
+                    <a href="#" class="latest-news__read-more">&gt;&gt; read post</a>
+                </article>
+
+                <article class="latest-news__item">
+                    <h3 class="latest-news__item-title">Partnership Strengthened with Advisory Board Formation</h3>
+                    <p class="latest-news__item-text">
+                        An international advisory board has been formed to guide the project&rsquo;s strategic direction and ensure alignment with EUSALP priorities and regional health policies.
+                    </p>
+                    <a href="#" class="latest-news__read-more">&gt;&gt; read post</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================================
+             6. UPCOMING EVENTS SECTION
+        ============================================= -->
+        <section class="upcoming-events" id="events">
+            <div class="container">
+                <h2 class="upcoming-events__heading">Upcoming Events</h2>
+                <p class="upcoming-events__empty">No upcoming events planned.</p>
+                <a href="#" class="upcoming-events__link">&gt;&gt; See past events</a>
+            </div>
+        </section>
+
+        <!-- ============================================
+             7. PARTNERS SECTION (ACCORDION)
+        ============================================= -->
+        <section class="partners" id="partners">
+            <div class="container">
+                <h2 class="partners__heading">Partners</h2>
+                <div class="partner-accordion">
+
+                    <!-- Partner 1 - Lead Partner -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span>
+                                <span class="partner-accordion__name partner-accordion__name--lead">Local Health Authority Veneto Region</span>
+                                <span class="partner-accordion__lead-tag">(Lead partner)</span>
+                            </span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Italy, Veneto, San Don&agrave; di Piave</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Lisa Leonardini</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:promisalute@regione.veneto.it">promisalute@regione.veneto.it</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://promisalute.it" target="_blank" rel="noopener">promisalute.it</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 2 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">Autonomous Province of Trento</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Italy, Provincia Autonoma di Trento, Trento</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Diego Conforti</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:Diego.conforti@provincia.tn.it">Diego.conforti@provincia.tn.it</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.provincia.tn.it" target="_blank" rel="noopener">www.provincia.tn.it</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 3 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">Health Agency of Lower Austria</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Austria, Nieder&ouml;sterreich, St. P&ouml;lten</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Florian Lochner</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:florian.lochner@healthacross.at">florian.lochner@healthacross.at</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.landesgesundheitsagentur.at" target="_blank" rel="noopener">www.landesgesundheitsagentur.at</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 4 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">Carinthia University of Applied Sciences</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Austria, K&auml;rnten, Villach</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Johannes Oberzaucher</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:J.Oberzaucher@fh-kaernten.at">J.Oberzaucher@fh-kaernten.at</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.cuas.at" target="_blank" rel="noopener">www.cuas.at</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 5 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">University Medical Centre Maribor</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Slovenia, Vzhodna Slovenija, Maribor</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Maja Molan</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:Maja.MOLAN@ukc-mb.si">Maja.MOLAN@ukc-mb.si</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.ukc-mb.si" target="_blank" rel="noopener">www.ukc-mb.si</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 6 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">BioValley France</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>France, Alsace, Strasbourg</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Manuel Pires-Neupert</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:manuel.piresneupert@biovalley-france.com">manuel.piresneupert@biovalley-france.com</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.biovalley-france.com" target="_blank" rel="noopener">www.biovalley-france.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 7 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">BIOPRO Baden-W&uuml;rttemberg</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Germany, Stuttgart, Stuttgart</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Barbara Jonischkeit</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:jonischkeit@bio-pro.de">jonischkeit@bio-pro.de</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.bio-pro.de" target="_blank" rel="noopener">www.bio-pro.de</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 8 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">Bayern Innovativ GmbH</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Germany, Mittelfranken, N&uuml;rnberg</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Stefanie Brauer</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:stefanie.brauer@bayern-innovativ.de">stefanie.brauer@bayern-innovativ.de</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.bayern-innovativ.de" target="_blank" rel="noopener">www.bayern-innovativ.de</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner 9 -->
+                    <div class="partner-accordion__item">
+                        <button class="partner-accordion__header" aria-expanded="false" onclick="togglePartner(this)">
+                            <span class="partner-accordion__name">Lucerne University of Applied Sciences and Arts</span>
+                            <span class="partner-accordion__chevron">&#9660;</span>
+                        </button>
+                        <div class="partner-accordion__body">
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Switzerland, Zentralschweiz, Luzern</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Martin Biallas</span>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <a href="mailto:martin.biallas@hslu.ch">martin.biallas@hslu.ch</a>
+                            </div>
+                            <div class="partner-accordion__detail">
+                                <svg class="partner-accordion__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                <a href="https://www.hslu.ch" target="_blank" rel="noopener">www.hslu.ch</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         SOLUTION SUPPLIERS DATABASE SECTION
+    ============================================= -->
+    <section class="solutions-section" id="solutions-section" style="display: none;">
+
+        <!-- Page Header — matches site section heading style -->
+        <div class="solutions-page-header">
+            <div class="container">
+                <h2 class="solutions-heading">Solution Suppliers Database</h2>
+                <button class="solutions-back-btn" onclick="hideSolutionSuppliers();">&larr; Back to Home</button>
+            </div>
+            <div class="container">
+                <p class="solutions-subtitle">Digital Interactive Use-Case Catalogue of 91 suppliers &amp; solutions supporting Alpine Space Health &amp; Care, mapped across 6 countries by the HACK-IT-NET partnership (D1.2.1).</p>
+            </div>
+
+            <!-- Stats Card — factsheet style -->
+            <div class="container">
+                <div class="solutions-stats-card">
+                    <div class="solutions-stats-header">
+                        <span class="solutions-stats-header-title">Database Overview</span>
+                    </div>
+                    <div class="solutions-stats-body">
+                        <div class="solutions-stat">
+                            <span class="solutions-stat-label">Total Solutions</span>
+                            <span class="solutions-stat-value"><strong>91</strong> use cases</span>
+                        </div>
+                        <div class="solutions-stat">
+                            <span class="solutions-stat-label">Currently Showing</span>
+                            <span class="solutions-stat-value"><strong id="solutions-active-count">91</strong> of 91</span>
+                        </div>
+                        <div class="solutions-stat">
+                            <span class="solutions-stat-label">Countries</span>
+                            <span class="solutions-stat-value"><strong>6</strong> Alpine Space</span>
+                        </div>
+                        <div class="solutions-stat">
+                            <span class="solutions-stat-label">H&amp;C Approaches</span>
+                            <span class="solutions-stat-value"><strong>3</strong> (CAREavan, STEMlab, PolicyParley)</span>
+                        </div>
+                        <div class="solutions-stat">
+                            <span class="solutions-stat-label">Challenge Categories</span>
+                            <span class="solutions-stat-value"><strong>8</strong> H&amp;C domains</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar + Content Layout -->
+        <div class="solutions-layout">
+
+            <!-- LEFT: Filter Sidebar -->
+            <aside class="solutions-sidebar">
+
+                <!-- Search -->
+                <div class="solutions-search-box">
+                    <input type="text" class="solutions-search-input" id="solutions-search" placeholder="Search solutions...">
+                </div>
+
+                <!-- Active Filters -->
+                <div class="solutions-active-filters" id="solutions-active-filters"></div>
+
+                <!-- Approach / Outcome Filters -->
+                <div class="solutions-filter-panel" id="filter-panel-outcomes">
+                    <div class="solutions-filter-panel-header" onclick="toggleFilterPanel('filter-panel-outcomes')">
+                        <span class="solutions-filter-panel-title">H&amp;C Approaches</span>
+                        <span class="solutions-filter-panel-chevron">&#9660;</span>
+                    </div>
+                    <div class="solutions-filter-panel-body">
+                        <div class="solutions-filter-panel-desc">HACK-IT-NET transfer methodology pillars for innovation in Alpine Space health &amp; care.</div>
+                        <div class="solutions-filter-item" data-filter="outcome" data-value="CAREavan" onclick="toggleSolutionFilter('outcome','CAREavan',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">CAREavan</span>
+                                <span class="solutions-filter-item-detail">Green &amp; e-Hospitals, sustainability, circular transition</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-outcome-CAREavan">36</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="outcome" data-value="STEMlab" onclick="toggleSolutionFilter('outcome','STEMlab',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">STEMlab</span>
+                                <span class="solutions-filter-item-detail">Customized technology transfer for health innovation</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-outcome-STEMlab">43</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="outcome" data-value="PolicyParley" onclick="toggleSolutionFilter('outcome','PolicyParley',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">PolicyParley</span>
+                                <span class="solutions-filter-item-detail">System-level health service provision &amp; policy</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-outcome-PolicyParley">43</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge Filters -->
+                <div class="solutions-filter-panel collapsed" id="filter-panel-challenges">
+                    <div class="solutions-filter-panel-header" onclick="toggleFilterPanel('filter-panel-challenges')">
+                        <span class="solutions-filter-panel-title">H&amp;C Challenges</span>
+                        <span class="solutions-filter-panel-chevron">&#9660;</span>
+                    </div>
+                    <div class="solutions-filter-panel-body">
+                        <div class="solutions-filter-panel-desc">Health &amp; care challenge domains addressed by the mapped solutions.</div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="WFC" onclick="toggleSolutionFilter('challenge','WFC',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">WFC &mdash; Workforce</span>
+                                <span class="solutions-filter-item-detail">Staff shortages, training, retention</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-WFC">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="AI" onclick="toggleSolutionFilter('challenge','AI',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">AI &mdash; Accessibility</span>
+                                <span class="solutions-filter-item-detail">Access to care, infrastructure gaps, rural areas</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-AI">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="DC" onclick="toggleSolutionFilter('challenge','DC',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">DC &mdash; Demographic</span>
+                                <span class="solutions-filter-item-detail">Ageing population, chronic disease, migration</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-DC">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="DI" onclick="toggleSolutionFilter('challenge','DI',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">DI &mdash; Digitalization</span>
+                                <span class="solutions-filter-item-detail">Digital health tools, innovation adoption, e-health</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-DI">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="EFS" onclick="toggleSolutionFilter('challenge','EFS',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">EFS &mdash; Economic</span>
+                                <span class="solutions-filter-item-detail">Financial sustainability, cost efficiency, funding</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-EFS">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="PP" onclick="toggleSolutionFilter('challenge','PP',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">PP &mdash; Prevention</span>
+                                <span class="solutions-filter-item-detail">Preventive &amp; promotive health strategies</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-PP">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="SD" onclick="toggleSolutionFilter('challenge','SD',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">SD &mdash; Specialization</span>
+                                <span class="solutions-filter-item-detail">Quality standards, data governance, decentralization</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-SD">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="challenge" data-value="APC" onclick="toggleSolutionFilter('challenge','APC',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">APC &mdash; Administrative</span>
+                                <span class="solutions-filter-item-detail">Bureaucracy, cross-border coordination, regulation</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-challenge-APC">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connection Type Filters -->
+                <div class="solutions-filter-panel" id="filter-panel-connection">
+                    <div class="solutions-filter-panel-header" onclick="toggleFilterPanel('filter-panel-connection')">
+                        <span class="solutions-filter-panel-title">Connection Zone</span>
+                        <span class="solutions-filter-panel-chevron">&#9660;</span>
+                    </div>
+                    <div class="solutions-filter-panel-body">
+                        <div class="solutions-filter-panel-desc">How the project partner discovered and connected with this solution supplier.</div>
+                        <div class="solutions-filter-item" data-filter="connection" data-value="local" onclick="toggleSolutionFilter('connection','local',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">Local Zone</span>
+                                <span class="solutions-filter-item-detail">Known from partner's regional network</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-connection-local">0</span>
+                        </div>
+                        <div class="solutions-filter-item" data-filter="connection" data-value="expansion" onclick="toggleSolutionFilter('connection','expansion',this)">
+                            <div class="solutions-filter-item-left">
+                                <span class="solutions-filter-item-name">Expansion Zone</span>
+                                <span class="solutions-filter-item-detail">New connection through project activities</span>
+                            </div>
+                            <span class="solutions-filter-item-count" id="count-connection-expansion">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Country Filters -->
+                <div class="solutions-filter-panel collapsed" id="filter-panel-country">
+                    <div class="solutions-filter-panel-header" onclick="toggleFilterPanel('filter-panel-country')">
+                        <span class="solutions-filter-panel-title">Provider Country</span>
+                        <span class="solutions-filter-panel-chevron">&#9660;</span>
+                    </div>
+                    <div class="solutions-filter-panel-body" id="filter-panel-country-body">
+                        <div class="solutions-filter-panel-desc">Country of the solution provider organization.</div>
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </div>
+
+                <!-- Reset Button -->
+                <button class="solutions-clear-btn" onclick="clearAllSolutionFilters()">Reset All Filters</button>
+
+            </aside>
+
+            <!-- RIGHT: Content Area -->
+            <div class="solutions-content">
+
+                <!-- Results Bar -->
+                <div class="solutions-results-bar">
+                    <span class="solutions-results-count" id="solutions-results-count">Showing <strong>91</strong> of 91 solution suppliers</span>
+                    <select class="solutions-sort-select" id="solutions-sort" onchange="sortSolutions(this.value)">
+                        <option value="id">Sort: Default order</option>
+                        <option value="title">Sort: A &rarr; Z</option>
+                        <option value="country">Sort: Country</option>
+                    </select>
+                </div>
+
+                <!-- No Results -->
+                <div class="solutions-no-results" id="solutions-no-results" style="display: none;">
+                    <h3>No results found</h3>
+                    <p>Try modifying the filters to find other solutions.</p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="solutions-cards" id="solutions-cards-grid">
+                    <!-- Cards rendered dynamically by solutions-ui.js -->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="solutions-modal" id="solutions-modal" style="display: none;">
+            <div class="solutions-modal-content" id="solutions-modal-body">
+                <!-- Modal content rendered dynamically -->
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ============================================
+         8. GREEN CONTACT BAR
+    ============================================= -->
+    <section class="contact-bar">
+        <div class="container">
+            <div class="contact-bar__inner">
+                <div class="contact-bar__title">HACK-IT-NET</div>
+                <div class="contact-bar__group">
+                    <span class="contact-bar__label">Links</span>
+                    <span class="contact-bar__value"><a href="https://www.linkedin.com/company/hack-it-net/" target="_blank" rel="noopener">Linkedin</a></span>
+                </div>
+                <div class="contact-bar__group">
+                    <span class="contact-bar__label">Contact</span>
+                    <span class="contact-bar__value">Lisa Leonardini</span>
+                    <span class="contact-bar__value"><a href="mailto:promisalute@regione.veneto.it">promisalute@regione.veneto.it</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         9. FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="site-footer__top">
+
+                <!-- Footer Brand Column -->
+                <div class="site-footer__brand">
+                    <img src="images/asp-logo-transparent.png" alt="Alpine Space Programme 2021-2027" class="site-footer__logo">
+                    <p class="site-footer__social-label">Follow us on social media</p>
+                    <div class="site-footer__social">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/AlpineSpaceProgramme" class="site-footer__social-link site-footer__social-link--facebook" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg class="site-footer__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <!-- X (Twitter) -->
+                        <a href="https://twitter.com/AlpineSpace" class="site-footer__social-link site-footer__social-link--x" target="_blank" rel="noopener" aria-label="X (formerly Twitter)">
+                            <svg class="site-footer__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/c/AlpineSpaceProgramme" class="site-footer__social-link site-footer__social-link--youtube" target="_blank" rel="noopener" aria-label="YouTube">
+                            <svg class="site-footer__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/company/alpine-space-programme/" class="site-footer__social-link site-footer__social-link--linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg class="site-footer__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/alpinespaceprogramme/" class="site-footer__social-link site-footer__social-link--instagram" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg class="site-footer__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 1 0 0-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 1 1-2.882 0 1.441 1.441 0 0 1 2.882 0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="site-footer__column">
+                    <h4 class="site-footer__column-title">Quick</h4>
+                    <ul class="site-footer__link-list">
+                        <li><a href="https://www.alpine-space.eu/about-us/" class="site-footer__link" target="_blank" rel="noopener">About us</a></li>
+                        <li><a href="https://www.alpine-space.eu/for-applicants/" class="site-footer__link" target="_blank" rel="noopener">For project applicants</a></li>
+                        <li><a href="https://www.alpine-space.eu/for-project-partners/" class="site-footer__link" target="_blank" rel="noopener">For project partners</a></li>
+                        <li><a href="https://www.alpine-space.eu/our-results/" class="site-footer__link" target="_blank" rel="noopener">Our results</a></li>
+                        <li><a href="https://www.alpine-space.eu/news-events/" class="site-footer__link" target="_blank" rel="noopener">News &amp; Events</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="site-footer__column">
+                    <h4 class="site-footer__column-title">Contacts</h4>
+                    <address class="site-footer__address">
+                        <p>Joint secretariat</p>
+                        <p>S&uuml;dtiroler Platz 11</p>
+                        <p>Abt. 1/01</p>
+                        <p>5020 Salzburg, Austria</p>
+                        <p><a href="https://www.alpine-space.eu" target="_blank" rel="noopener">Web</a></p>
+                        <p><a href="mailto:js@alpine-space.eu">Mail</a></p>
+                    </address>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <div class="site-footer__bottom">
+            <div class="container">
+                <div class="site-footer__bottom-inner">
+                    <p class="site-footer__copyright">&copy; Copyright 2021. All Right Reserved. Designed and Developed by iService / <a href="https://www.iservice.at" target="_blank" rel="noopener">www.iservice.at</a></p>
+                    <div class="site-footer__legal">
+                        <a href="https://www.alpine-space.eu/privacy-policy/" class="site-footer__legal-link" target="_blank" rel="noopener">Privacy Policy</a>
+                        <a href="https://www.alpine-space.eu/fraud-fight/" class="site-footer__legal-link" target="_blank" rel="noopener">Fraud fight statement</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/solutions-data.js"></script>
+    <script src="js/solutions-ui.js?v=2"></script>
+
+    <script>
+        // Partner accordion toggle
+        function togglePartner(button) {
+            var item = button.closest('.partner-accordion__item');
+            var isOpen = item.classList.contains('partner-accordion__item--open');
+
+            // Close all accordion items
+            var allItems = document.querySelectorAll('.partner-accordion__item');
+            allItems.forEach(function(el) {
+                el.classList.remove('partner-accordion__item--open');
+                el.querySelector('.partner-accordion__header').setAttribute('aria-expanded', 'false');
+            });
+
+            // Toggle the clicked one
+            if (!isOpen) {
+                item.classList.add('partner-accordion__item--open');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+    </script>
+</body>
+</html>
