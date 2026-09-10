@@ -27,45 +27,12 @@ var challengeLabels = {
     'APC': 'Administrative & Promotive Challenges'
 };
 
-// === Section Toggle ===
+// === Bootstrap ===
+// The database is the only content of the site: build it on page load.
 
-function showSolutionSuppliers() {
-    var mainEl = document.querySelector('main');
-    if (mainEl) mainEl.style.display = 'none';
-    var contactBar = document.querySelector('.contact-bar');
-    if (contactBar) contactBar.style.display = 'none';
-
-    var section = document.getElementById('solutions-section');
-    if (section) section.style.display = 'block';
-
-    var allTabs = document.querySelectorAll('.hero__tab');
-    allTabs.forEach(function(tab) {
-        tab.classList.remove('hero__tab--active');
-    });
-    var solTab = document.getElementById('solutions-tab');
-    if (solTab) solTab.classList.add('hero__tab--active');
-
+document.addEventListener('DOMContentLoaded', function () {
     initSolutionsDB();
-    window.scrollTo(0, 0);
-}
-
-function hideSolutionSuppliers() {
-    var mainEl = document.querySelector('main');
-    if (mainEl) mainEl.style.display = '';
-    var contactBar = document.querySelector('.contact-bar');
-    if (contactBar) contactBar.style.display = '';
-
-    var section = document.getElementById('solutions-section');
-    if (section) section.style.display = 'none';
-
-    var allTabs = document.querySelectorAll('.hero__tab');
-    allTabs.forEach(function(tab) {
-        tab.classList.remove('hero__tab--active');
-    });
-    if (allTabs.length > 0) allTabs[0].classList.add('hero__tab--active');
-
-    window.scrollTo(0, 0);
-}
+});
 
 // === Initialization ===
 
